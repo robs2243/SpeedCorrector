@@ -12,13 +12,9 @@
         <TextBox x:Name="TextBox_Lösung_Punke" HorizontalAlignment="Left" Height="23" Margin="689,120,0,0" TextWrapping="Wrap" Text="10" VerticalAlignment="Top" Width="52" TextAlignment="Center" VerticalContentAlignment="Center"/>
         <Label x:Name="Label_Antwort_Beschriftung_Aufgabenpunkte" Content="erreichte Punkte" HorizontalAlignment="Left" Margin="668,276,0,0" VerticalAlignment="Top"/>
         <Button x:Name="Button_Lösung_letztes_Bild" Content="Letztes Bild" HorizontalAlignment="Left" Margin="647,47,0,0" VerticalAlignment="Top" Width="60" ClickMode="Press" RenderTransformOrigin="0.188,0.835" FontSize="9" Click="Button_Lösung_letztes_Bild_Click"/>
-        <TextBox x:Name="TextBox_System_Nachricht" HorizontalAlignment="Left" Height="33" Margin="140,526,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="468" ScrollViewer.VerticalScrollBarVisibility="Auto" 
+        <TextBox x:Name="TextBox_System_Nachricht" HorizontalAlignment="Left" Height="33" Margin="140,526,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="497" ScrollViewer.VerticalScrollBarVisibility="Auto" 
                  ScrollViewer.CanContentScroll="True"/>
-        <Label Content="User" HorizontalAlignment="Left" Margin="622,472,0,0" VerticalAlignment="Top"/>
-        <TextBox HorizontalAlignment="Left" Height="23" Margin="661,472,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120"/>
-        <Label Content="PW" HorizontalAlignment="Left" Margin="624,503,0,0" VerticalAlignment="Top"/>
-        <TextBox x:Name="tB_pw" HorizontalAlignment="Left" Height="23" Margin="661,504,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120"/>
-        <Button x:Name="Button_DB_erstellen" Content="DB erstellen" HorizontalAlignment="Left" Margin="679,539,0,0" VerticalAlignment="Top" Width="75" RenderTransformOrigin="0.568,0.131" Click="Button_DB_erstellen_Click"/>
+        <Button x:Name="Button_DB_erstellen" Content="DB erstellen" HorizontalAlignment="Left" Margin="674,449,0,0" VerticalAlignment="Top" Width="75" RenderTransformOrigin="0.568,0.131" Click="Button_DB_erstellen_Click"/>
         <Label Content="System MSG" HorizontalAlignment="Left" Margin="55,530,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.671,0.615"/>
         <Button x:Name="Button_Lösung_naechstes_Bild" Content="Nächstes Bild" HorizontalAlignment="Left" Margin="722,47,0,0" VerticalAlignment="Top" Width="60" ClickMode="Press" RenderTransformOrigin="0.188,0.835" FontSize="9" Click="Button_Lösung_naechstes_Bild_Click"/>
         <Button x:Name="Button_Lösung_speichern" Content="speichern" HorizontalAlignment="Left" Margin="687,170,0,0" VerticalAlignment="Top" Width="60" ClickMode="Press" RenderTransformOrigin="0.188,0.835" FontSize="9" Click="Button_Lösung_speichern_Click"/>
@@ -38,7 +34,9 @@
         </InkCanvas>
         <Button x:Name="Button_Antwort_Korrektur_speichern" Content="Korrektur speichern" HorizontalAlignment="Left" Margin="669,371,0,0" VerticalAlignment="Top" Width="90" ClickMode="Press" RenderTransformOrigin="0.188,0.835" FontSize="9"/>
         <Button x:Name="Button_Antwort_Punte_Korrektur_speichern" Content="Pkt und Korrektur speichern" HorizontalAlignment="Left" Margin="652,400,0,0" VerticalAlignment="Top" Width="129" ClickMode="Press" RenderTransformOrigin="0.188,0.835" FontSize="9"/>
-        <TextBox x:Name="TextBox_pfad_fragen" HorizontalAlignment="Left" Height="23" Margin="58,450,0,0" TextWrapping="Wrap" Text="Ordner für Schülerlösungen wählen..." VerticalAlignment="Top" Width="382"/>
-        <TextBox x:Name="TextBox_pfad_antworten" HorizontalAlignment="Left" Height="23" Margin="58,484,0,0" TextWrapping="Wrap" Text="Ordner für Musterlösungen wählen..." VerticalAlignment="Top" Width="382"/>
+        <TextBox x:Name="TextBox_pfad_fragen" HorizontalAlignment="Left" Height="23" Margin="58,450,0,0" TextWrapping="Wrap" Text="Ordner für Schülerlösungen wählen..." VerticalAlignment="Top" Width="481"/>
+        <TextBox x:Name="TextBox_pfad_antworten" HorizontalAlignment="Left" Height="23" Margin="58,484,0,0" TextWrapping="Wrap" Text="Ordner für Musterlösungen wählen..." VerticalAlignment="Top" Width="481"/>
+        <Button x:Name="Button_fragen_wählen" Content="Auswählen" HorizontalAlignment="Left" Margin="562,449,0,0" VerticalAlignment="Top" Width="75" RenderTransformOrigin="0.568,0.131" Click="Button_fragen_wählen_Click"/>
+        <Button x:Name="Button_antworten_wählen" Content="Auswählen" HorizontalAlignment="Left" Margin="562,487,0,0" VerticalAlignment="Top" Width="75" RenderTransformOrigin="0.568,0.131" Click="Button_antworten_wählen_Click"/>
     </Grid>
 </Window>

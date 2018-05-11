@@ -18,6 +18,9 @@ using System.Media;
 using System.IO;
 using System.Data.SQLite;
 using System.Data;
+using Microsoft.Win32;
+using Ookii.Dialogs.Wpf;
+
 
 
 namespace speedCorrector
@@ -199,31 +202,7 @@ namespace speedCorrector
             {
                 MessageBox.Show("Fehler beim Laden der Startbilder.\n" + ex.Message, "Fehler", MessageBoxButton.OK, MessageBoxImage.Error);
             }
-                        
-            try
-            {
-                pfade_fragen = Directory.EnumerateFiles(Directory.GetCurrentDirectory() + "/fragen");
-                pfade_antworten = Directory.EnumerateFiles(Directory.GetCurrentDirectory() + "/antworten");
-                //MessageBox.Show("Es gibt " + pfade.Count<String>().ToString() + " Bilder.");
-            }
-
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message);
-            }
-
-            //Datenbank bauen
-            for (int i = 0; i < pfade_fragen.Count<String>(); i++)
-            {
-                schreibehashWerteInDBTab("fragen", returnhHashValue(pfade_fragen.ElementAt<String>(i)));
-
-            }
-
-            for (int i = 0; i < pfade_antworten.Count<String>(); i++)
-            {
-                schreibehashWerteInDBTab("antworten", returnhHashValue(pfade_antworten.ElementAt<String>(i)));
-            }
-            TextBox_System_Nachricht.Text = "Dantenbank erfolgreich aufgebaut.";
+                         
         }
 
         private void bilderBlättern(String richtung, bool InkCanvas)
@@ -375,13 +354,61 @@ namespace speedCorrector
 
         private void Button_DB_erstellen_Click(object sender, RoutedEventArgs e)
         {
-            
+
+            try
+            {
+                pfade_fragen = Directory.EnumerateFiles(Directory.GetCurrentDirectory() + "/fragen");
+                pfade_antworten = Directory.EnumerateFiles(Directory.GetCurrentDirectory() + "/antworten");
+                //MessageBox.Show("Es gibt " + pfade.Count<String>().ToString() + " Bilder.");
+            }
+
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+
+            //Datenbank bauen
+            for (int i = 0; i < pfade_fragen.Count<String>(); i++)
+            {
+                schreibehashWerteInDBTab("fragen", returnhHashValue(pfade_fragen.ElementAt<String>(i)));
+
+            }
+
+            for (int i = 0; i < pfade_antworten.Count<String>(); i++)
+            {
+                schreibehashWerteInDBTab("antworten", returnhHashValue(pfade_antworten.ElementAt<String>(i)));
+            }
+            TextBox_System_Nachricht.Text = "Dantenbank erfolgreich aufgebaut.";
 
         }
 
         private void Button_Antwort_Punkte_speichern_Click(object sender, RoutedEventArgs e)
         {
 
+        }
+
+        private void Button_fragen_wählen_Click(object sender, RoutedEventArgs e)
+        {
+            VistaFolderBrowserDialog dialog = new VistaFolderBrowserDialog();
+            dialog.Description = "Please select a folder.";
+            dialog.UseDescriptionForTitle = true; // This applies to the Vista style dialog only, not the old dialog.
+            if( !VistaFolderBrowserDialog.IsVistaFolderDialogSupported )
+                MessageBox.Show(this, "Because you are not using Windows Vista or later, the regular folder browser dialog will be used. Please use Windows Vista to see the new dialog.", "Sample folder browser dialog");
+            if ((bool)dialog.ShowDialog(this))
+                TextBox_pfad_fragen.Text = dialog.SelectedPath;
+                //MessageBox.Show(this, "The selected folder was: " + dialog.SelectedPath, "Sample folder browser dialog");                
+        }
+
+        private void Button_antworten_wählen_Click(object sender, RoutedEventArgs e)
+        {
+            VistaFolderBrowserDialog dialog = new VistaFolderBrowserDialog();
+            dialog.Description = "Please select a folder.";
+            dialog.UseDescriptionForTitle = true; // This applies to the Vista style dialog only, not the old dialog.
+            if (!VistaFolderBrowserDialog.IsVistaFolderDialogSupported)
+                MessageBox.Show(this, "Because you are not using Windows Vista or later, the regular folder browser dialog will be used. Please use Windows Vista to see the new dialog.", "Sample folder browser dialog");
+            if ((bool)dialog.ShowDialog(this))
+                TextBox_pfad_antworten.Text = dialog.SelectedPath;
+            //MessageBox.Show(this, "The selected folder was: " + dialog.SelectedPath, "Sample folder browser dialog"); 
         }
     }
 } 
