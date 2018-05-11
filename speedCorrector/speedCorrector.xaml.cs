@@ -188,10 +188,10 @@ namespace speedCorrector
             counter = 0;
             counter2 = 0;
 
-            PictureBox_Lösung.Stretch = Stretch.Fill;
+            PictureBox_Fragen.Stretch = Stretch.Fill;
             try
             {
-                PictureBox_Lösung.Source = sendeBildAnImage(Directory.GetCurrentDirectory() + "/fragen/bild1.bmp");
+                PictureBox_Fragen.Source = sendeBildAnImage(Directory.GetCurrentDirectory() + "/fragen/bild1.bmp");
                 InkCanvas_Antwort.Background = new ImageBrush(sendeBildAnImage(Directory.GetCurrentDirectory() + "/antworten/bild2.bmp"));
 
             }
@@ -275,7 +275,7 @@ namespace speedCorrector
                 if (counter > 0 && counter < pfade_fragen.Count<String>())
                 {
 
-                    PictureBox_Lösung.Source = sendeBildAnImage(pfade_fragen.ElementAt<String>(counter));
+                    PictureBox_Fragen.Source = sendeBildAnImage(pfade_fragen.ElementAt<String>(counter));
 
                 }
 
