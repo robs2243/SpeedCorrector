@@ -34,8 +34,8 @@
         </InkCanvas>
         <Button x:Name="Button_Antwort_Korrektur_speichern" Content="Korrektur speichern" HorizontalAlignment="Left" Margin="669,371,0,0" VerticalAlignment="Top" Width="90" ClickMode="Press" RenderTransformOrigin="0.188,0.835" FontSize="9"/>
         <Button x:Name="Button_Antwort_Punte_Korrektur_speichern" Content="Pkt und Korrektur speichern" HorizontalAlignment="Left" Margin="652,400,0,0" VerticalAlignment="Top" Width="129" ClickMode="Press" RenderTransformOrigin="0.188,0.835" FontSize="9"/>
-        <TextBox x:Name="TextBox_pfad_fragen" HorizontalAlignment="Left" Height="23" Margin="58,450,0,0" TextWrapping="Wrap" Text="Ordner für Schülerlösungen wählen..." VerticalAlignment="Top" Width="481"/>
-        <TextBox x:Name="TextBox_pfad_antworten" HorizontalAlignment="Left" Height="23" Margin="58,484,0,0" TextWrapping="Wrap" Text="Ordner für Musterlösungen wählen..." VerticalAlignment="Top" Width="481"/>
+        <TextBox x:Name="TextBox_pfad_fragen" HorizontalAlignment="Left" Height="23" Margin="58,450,0,0" TextWrapping="Wrap" Text="Ordner für Schülerlösungen wählen..." VerticalAlignment="Top" Width="481" PreviewMouseDown="TextBox_pfad_fragen_PreviewMouseDown"/>
+        <TextBox x:Name="TextBox_pfad_antworten" HorizontalAlignment="Left" Height="23" Margin="58,484,0,0" TextWrapping="Wrap" Text="Ordner für Musterlösungen wählen..." VerticalAlignment="Top" Width="481" PreviewMouseDown="TextBox_pfad_antworten_PreviewMouseDown"/>
         <Button x:Name="Button_fragen_wählen" Content="Auswählen" HorizontalAlignment="Left" Margin="562,449,0,0" VerticalAlignment="Top" Width="75" RenderTransformOrigin="0.568,0.131" Click="Button_fragen_wählen_Click"/>
         <Button x:Name="Button_antworten_wählen" Content="Auswählen" HorizontalAlignment="Left" Margin="562,487,0,0" VerticalAlignment="Top" Width="75" RenderTransformOrigin="0.568,0.131" Click="Button_antworten_wählen_Click"/>
     </Grid>

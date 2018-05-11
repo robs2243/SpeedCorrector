@@ -357,29 +357,32 @@ namespace speedCorrector
 
             try
             {
-                pfade_fragen = Directory.EnumerateFiles(Directory.GetCurrentDirectory() + "/fragen");
-                pfade_antworten = Directory.EnumerateFiles(Directory.GetCurrentDirectory() + "/antworten");
+                pfade_fragen = Directory.EnumerateFiles(TextBox_pfad_fragen.Text);
+                pfade_antworten = Directory.EnumerateFiles(TextBox_pfad_antworten.Text);
+                //pfade_fragen = Directory.EnumerateFiles(Directory.GetCurrentDirectory() + "/fragen");
+                //pfade_antworten = Directory.EnumerateFiles(Directory.GetCurrentDirectory() + "/antworten");
                 //MessageBox.Show("Es gibt " + pfade.Count<String>().ToString() + " Bilder.");
-            }
 
+
+
+                //Datenbank bauen
+                for (int i = 0; i < pfade_fragen.Count<String>(); i++)
+                {
+                    schreibehashWerteInDBTab("fragen", returnhHashValue(pfade_fragen.ElementAt<String>(i)));
+
+                }
+
+                for (int i = 0; i < pfade_antworten.Count<String>(); i++)
+                {
+                    schreibehashWerteInDBTab("antworten", returnhHashValue(pfade_antworten.ElementAt<String>(i)));
+                }
+                TextBox_System_Nachricht.Text = "Dantenbank erfolgreich aufgebaut.";
+            }
             catch (Exception ex)
             {
                 MessageBox.Show(ex.Message);
-            }
-
-            //Datenbank bauen
-            for (int i = 0; i < pfade_fragen.Count<String>(); i++)
-            {
-                schreibehashWerteInDBTab("fragen", returnhHashValue(pfade_fragen.ElementAt<String>(i)));
 
             }
-
-            for (int i = 0; i < pfade_antworten.Count<String>(); i++)
-            {
-                schreibehashWerteInDBTab("antworten", returnhHashValue(pfade_antworten.ElementAt<String>(i)));
-            }
-            TextBox_System_Nachricht.Text = "Dantenbank erfolgreich aufgebaut.";
-
         }
 
         private void Button_Antwort_Punkte_speichern_Click(object sender, RoutedEventArgs e)
@@ -387,28 +390,44 @@ namespace speedCorrector
 
         }
 
-        private void Button_fragen_wählen_Click(object sender, RoutedEventArgs e)
+        private String pfad_auswählen()
         {
+            String pfad;
             VistaFolderBrowserDialog dialog = new VistaFolderBrowserDialog();
-            dialog.Description = "Please select a folder.";
-            dialog.UseDescriptionForTitle = true; // This applies to the Vista style dialog only, not the old dialog.
-            if( !VistaFolderBrowserDialog.IsVistaFolderDialogSupported )
-                MessageBox.Show(this, "Because you are not using Windows Vista or later, the regular folder browser dialog will be used. Please use Windows Vista to see the new dialog.", "Sample folder browser dialog");
-            if ((bool)dialog.ShowDialog(this))
-                TextBox_pfad_fragen.Text = dialog.SelectedPath;
-                //MessageBox.Show(this, "The selected folder was: " + dialog.SelectedPath, "Sample folder browser dialog");                
-        }
-
-        private void Button_antworten_wählen_Click(object sender, RoutedEventArgs e)
-        {
-            VistaFolderBrowserDialog dialog = new VistaFolderBrowserDialog();
-            dialog.Description = "Please select a folder.";
+            dialog.Description = "Wählen Sie bitte den entsprechenden Ordner.";
             dialog.UseDescriptionForTitle = true; // This applies to the Vista style dialog only, not the old dialog.
             if (!VistaFolderBrowserDialog.IsVistaFolderDialogSupported)
                 MessageBox.Show(this, "Because you are not using Windows Vista or later, the regular folder browser dialog will be used. Please use Windows Vista to see the new dialog.", "Sample folder browser dialog");
             if ((bool)dialog.ShowDialog(this))
-                TextBox_pfad_antworten.Text = dialog.SelectedPath;
-            //MessageBox.Show(this, "The selected folder was: " + dialog.SelectedPath, "Sample folder browser dialog"); 
+            {
+                pfad = dialog.SelectedPath;
+                return pfad;
+                //MessageBox.Show(this, "The selected folder was: " + dialog.SelectedPath, "Sample folder browser dialog"); 
+            }
+            else
+            {
+                return "";
+            } 
+        }
+
+        private void Button_fragen_wählen_Click(object sender, RoutedEventArgs e)
+        {
+            TextBox_pfad_fragen.Text = pfad_auswählen();               
+        }
+
+        private void Button_antworten_wählen_Click(object sender, RoutedEventArgs e)
+        {
+            TextBox_pfad_antworten.Text = pfad_auswählen();
+        }
+
+        private void TextBox_pfad_fragen_PreviewMouseDown(object sender, MouseButtonEventArgs e)
+        {
+            TextBox_pfad_fragen.Text = pfad_auswählen();
+        }
+
+        private void TextBox_pfad_antworten_PreviewMouseDown(object sender, MouseButtonEventArgs e)
+        {
+            TextBox_pfad_antworten.Text = pfad_auswählen();
         }
     }
 } 
