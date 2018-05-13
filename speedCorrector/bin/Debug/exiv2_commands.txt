@@ -1,0 +1,14 @@
+exiv2.exe -M"add Exif.Image.ImageDescription Robert" c:\fotos\2_ver.jpg
+
+
+41
+down vote
+accepted
+To start the process with parameters, you can use following code:
+
+string filename = Path.Combine(cPath,"HHTCtrlp.exe");
+var proc = System.Diagnostics.Process.Start(filename, cParams);
+To kill/exit the program again, you can use following code:
+
+proc.CloseMainWindow(); 
+proc.Close();

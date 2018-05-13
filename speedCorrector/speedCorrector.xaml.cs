@@ -20,7 +20,13 @@ using System.Data.SQLite;
 using System.Data;
 using Microsoft.Win32;
 using Ookii.Dialogs.Wpf;
-
+using System.Drawing.Imaging;
+using System.Drawing;
+//using ExifLibrary;
+using System.ComponentModel;
+using ExifUtils.Exif;
+using ExifUtils.Exif.IO;
+using ExifUtils.Exif.TagValues;
 
 
 namespace speedCorrector
@@ -64,8 +70,8 @@ namespace speedCorrector
 
             return bi3;
         }
-                
-  
+
+
         private static byte[] converterDemo(BitmapImage x)
         {
             byte[] data;
@@ -76,7 +82,7 @@ namespace speedCorrector
             data = ms.ToArray();
             return data;
         }
-       
+
         private String returnhHashValue(String Bild)
         {
             byte[] hashValue;
@@ -93,7 +99,7 @@ namespace speedCorrector
 
             // Close the stream.
             fRead.Close();
-                        
+
             String hashValueString = PrintByteArray(hashValue);
 
             return hashValueString;
@@ -115,8 +121,8 @@ namespace speedCorrector
         }
 
         private void B_letztes_Click(object sender, RoutedEventArgs e)
-        { 
-            
+        {
+
         }
 
 
@@ -150,7 +156,7 @@ namespace speedCorrector
             {
                 MessageBox.Show("Message: " + myException.Message + "\n");
                 TextBox_System_Nachricht.Text = "Fehler beim Öffnen der DB.";
-                
+
             }
 
             TextBox_System_Nachricht.Text = "DB erfolgreich geöffnet.\n";
@@ -173,11 +179,11 @@ namespace speedCorrector
             }
 
         }
-    
-                       
+
+
         private BitmapImage sendeBildAnImage(String Bild)
         {
-            Image myImage3 = new Image();
+            System.Windows.Controls.Image myImage3 = new System.Windows.Controls.Image();
             BitmapImage bi3 = new BitmapImage();
             bi3.BeginInit();
             bi3.UriSource = new Uri(Bild, UriKind.Absolute);
@@ -196,13 +202,13 @@ namespace speedCorrector
             {
                 PictureBox_Fragen.Source = sendeBildAnImage(Directory.GetCurrentDirectory() + "/fragen/bild1.bmp");
                 InkCanvas_Antwort.Background = new ImageBrush(sendeBildAnImage(Directory.GetCurrentDirectory() + "/antworten/bild2.bmp"));
-
+                
             }
             catch (Exception ex)
             {
                 MessageBox.Show("Fehler beim Laden der Startbilder.\n" + ex.Message, "Fehler", MessageBoxButton.OK, MessageBoxImage.Error);
             }
-                         
+
         }
 
         private void bilderBlättern(String richtung, bool InkCanvas)
@@ -267,7 +273,7 @@ namespace speedCorrector
                     if (counter2 == pfade_antworten.Count<String>())
                     {
 
-                        counter2 = pfade_antworten.Count<String>();
+                        counter2 = pfade_antworten.Count<String>();                        
 
                     }
                     else
@@ -305,6 +311,8 @@ namespace speedCorrector
                 {
 
                     InkCanvas_Antwort.Background = new ImageBrush(sendeBildAnImage(pfade_antworten.ElementAt<String>(counter2)));
+                    //Console.WriteLine(pfade_antworten.ElementAt<String>(counter2));
+                    metadata_reader(pfade_antworten.ElementAt<String>(counter2));
 
                 }
 
@@ -315,7 +323,7 @@ namespace speedCorrector
                 }
                 */
             }
-            
+
         }
 
         private void Button_Lösung_naechstes_Bild_Click(object sender, RoutedEventArgs e)
@@ -339,6 +347,7 @@ namespace speedCorrector
         private void Button_Antwort_naechstes_Bild_Click(object sender, RoutedEventArgs e)
         {
             bilderBlättern("vor", true);
+
         }
 
         private void Button_Antwort_letztes_Bild_Click(object sender, RoutedEventArgs e)
@@ -347,7 +356,7 @@ namespace speedCorrector
         }
 
         private void Button_Lösung_speichern_Click(object sender, RoutedEventArgs e)
-        {         
+        {
             //schreibe_DB_Fragen(returnhHashValue(pfade_fragen.ElementAt<String>(counter)), Int16.Parse(TextBox_Lösung_Punke.Text));
             TextBox_System_Nachricht.Text = TextBox_System_Nachricht.Text + returnhHashValue(pfade_fragen.ElementAt<String>(counter)) + "\n";
         }
@@ -407,12 +416,12 @@ namespace speedCorrector
             else
             {
                 return "";
-            } 
+            }
         }
 
         private void Button_fragen_wählen_Click(object sender, RoutedEventArgs e)
         {
-            TextBox_pfad_fragen.Text = pfad_auswählen();               
+            TextBox_pfad_fragen.Text = pfad_auswählen();
         }
 
         private void Button_antworten_wählen_Click(object sender, RoutedEventArgs e)
@@ -428,6 +437,264 @@ namespace speedCorrector
         private void TextBox_pfad_antworten_PreviewMouseDown(object sender, MouseButtonEventArgs e)
         {
             TextBox_pfad_antworten.Text = pfad_auswählen();
+        }
+
+
+
+        private void metadatei()
+        {
+            // Create an Image object. 
+            System.Drawing.Image theImage = new Bitmap("c:\\fotos\\2.jpg");
+
+            // Get the PropertyItems property from image.
+            PropertyItem[] propItems = theImage.PropertyItems;
+
+            int count = 0;
+            foreach (PropertyItem propItem in propItems)
+            {
+                Console.WriteLine("Id: " + propItem.Id.ToString("x"));
+                Console.WriteLine("Type: " + propItem.Type.ToString());
+                Console.WriteLine("Länge: " + propItem.Len.ToString());
+                Console.WriteLine("Wert: " + System.Text.Encoding.UTF8.GetString(propItem.Value));
+            }
+
+
+        }
+        /*
+        private void metadatei2()
+        {
+            ImageFile data = ImageFile.FromFile("metadata.jpg");
+            ExifProperty item;
+            
+            //ListViewItem lvitem = new ListViewItem();
+                       
+            //data.Properties
+            //GetName(typeof(IFD), ExifTagFactory.GetTagIFD(item.Tag));
+            //ExifTagFactory.GetTagIFD()
+            //ExifTagFactory.GetExifTag()
+            
+            item = data.Properties[0];
+            item.Value = "C91361CAEC37DD3FA018FE1CF6A2EAB28F0BC04898ADAE473EFD3D8665ADFC80";
+            item = data.Properties[1];
+            item.Value = "hss-06641";
+            item = data.Properties[28];
+            item.Value = "lsg-0123456789";
+            Console.WriteLine(item.ToString());
+            Console.WriteLine(item.Interoperability.TypeID);
+            data.Save("c:\\fotos\\2_ver.jpg");
+            
+
+            //ExifProperty item;
+            //item = data.Properties[ExifTagFactory.GetTagID( y.Get()]
+            int stelle = 0;
+            //int[] werte = { 0, 1, 28, 19};
+            //ExifProperty asfd = new ExifProperty(ExifTag bla);
+            //IFD.EXIF
+            //xifTag.GPSAltitude;
+
+            //var bla = new ExifProperty(ExifTag.GPSAltitude)
+
+            //ExifProperty copyright = new ExifProperty();
+            //copyright.Tag = ExifTag.Copyright;
+
+            //ExifTag wert = 12;
+            //ExifProperty item2;
+            //data.Properties.Add(ExifTagFactory.GetExifTag(ExifTag.GPSAltitude),)
+
+            //ExifTagFactory tag;
+
+            //data.Properties.Add(ExifTagFactory.)
+
+            Console.WriteLine("Anzahl Eingenschaften: " + data.Properties.Count);
+            try
+            {
+                for (int i = 0; i < data.Properties.Count; i++)
+                {
+                    
+                    item = data.Properties[i];
+                    if (item.Interoperability.TagID == 33432)
+                    {
+                        item.Value = "FICK DICH!";
+                        Console.WriteLine("Geändert!");
+                    }
+
+                    //item.Value = "C91361CAEC37DD3FA018FE1CF6A2EAB28F0BC04898ADAE473EFD3D8665ADFC80";
+                    //Console.WriteLine("TagID: " + item.Interoperability.TagID);
+                    //Console.WriteLine("Name: " + item.Name);
+                    stelle++;
+
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Fehler bei: " + stelle + " " + ex.Message);
+            }
+            data.Save("metadata.jpg");
+            
+            int zähler = 0;
+            foreach (ExifProperty item in data.Properties)
+            {
+                
+                //ListViewItem lvitem = new ListViewItem(item.Name);
+                Console.WriteLine("Nummer: " + zähler +" Item: " + item.ToString() + " Typ: " + item.Interoperability.TypeID);
+                //lvitem.SubItems.Add(Enum.GetName(typeof(IFD), ExifTagFactory.GetTagIFD(item.Tag)));
+                //Console.WriteLine(IFD.EXIF);
+                //Console.WriteLine(ExifTagFactory.GetTagIFD(item.Tag));
+
+                //lvitem.Tag = item;
+                //lvExif.Items.Add(lvitem);
+                zähler++;
+
+            }
+            
+
+        }
+        */
+        private void Button_meta_Click(object sender, RoutedEventArgs e)
+        {
+            //metadatei2();
+            metadata_writer("Klaus Petersen", "E1BT1", "21.02.2018", "1b", "10", "5", "LBTE", "C91361CAEC37DD3FA018FE1CF6A2EAB28F0BC04898ADAE473EFD3D8665ADFC80",
+                @"metadata.jpg");
+        }
+
+        private void metadata_writer(String Schuler, String Klasse, String Datum, String Aufgabe, String maxPunkte, String erreichtePunkte, 
+            String Klassenarbeit, String HashWert, String pfadBilddatei)
+        {
+            ExifProperty copyright = new ExifProperty();
+            ExifProperty ImageDescription = new ExifProperty();
+            ExifProperty Make = new ExifProperty();
+            ExifProperty Model = new ExifProperty();
+            ExifProperty GPSLatitudeRef = new ExifProperty();
+            ExifProperty Software = new ExifProperty();
+            ExifProperty DateTime = new ExifProperty(); //nur zahl
+            ExifProperty Artist = new ExifProperty(); //nur zahl
+
+            copyright.Tag = ExifTag.Copyright;
+            ImageDescription.Tag = ExifTag.ImageDescription;
+            Make.Tag = ExifTag.Make;
+            Model.Tag = ExifTag.Model;
+            GPSLatitudeRef.Tag = ExifTag.GpsLatitudeRef;
+            Software.Tag = ExifTag.Software;
+            DateTime.Tag = ExifTag.DateTime;
+            Artist.Tag = ExifTag.Artist;
+
+            copyright.Value = String.Format(Schuler);
+            ImageDescription.Value = String.Format(Klasse);
+            Make.Value = String.Format(Datum);
+            Model.Value = String.Format(Aufgabe);
+            DateTime.Value = String.Format(maxPunkte);
+            Artist.Value = String.Format(erreichtePunkte);
+            GPSLatitudeRef.Value = String.Format(Klassenarbeit);
+            Software.Value = String.Format(HashWert);
+                        
+            ExifPropertyCollection properties = ExifReader.GetExifData(pfadBilddatei);     
+            
+            FileStream datenstrom = File.OpenRead(pfadBilddatei);                
+            System.Drawing.Image bilddatei = System.Drawing.Image.FromStream(datenstrom);
+
+            try { ExifWriter.AddExifData(bilddatei, copyright);} catch { MessageBox.Show("Fehler: copyright"); } 
+            try { ExifWriter.AddExifData(bilddatei, ImageDescription); } catch { MessageBox.Show("Fehler: ImageDescription"); }
+            try { ExifWriter.AddExifData(bilddatei, Make); } catch { MessageBox.Show("Fehler: Make"); }
+            try { ExifWriter.AddExifData(bilddatei, Model); } catch { MessageBox.Show("Fehler: Model"); }
+            try { ExifWriter.AddExifData(bilddatei, GPSLatitudeRef); } catch { MessageBox.Show("Fehler: GPSLatitudeRef"); }
+            try { ExifWriter.AddExifData(bilddatei, Software); } catch { MessageBox.Show("Fehler: Software"); }
+            try { ExifWriter.AddExifData(bilddatei, DateTime); } catch { MessageBox.Show("Fehler: DateTime"); }
+            try { ExifWriter.AddExifData(bilddatei, Artist); } catch { MessageBox.Show("Fehler: ISOSpeedRatings"); }
+
+            bilddatei.Save("dummy.jpg");
+            datenstrom.Close();
+            kopieren(pfadBilddatei);
+
+        }
+
+        private void metadata_reader(String pfadBilddatei)
+        {
+            Console.WriteLine(pfadBilddatei.ToString());
+            ExifPropertyCollection properties = ExifReader.GetExifData(@"dummy.jpg");
+
+            foreach (ExifProperty property in properties)
+            {
+                // Console.WriteLine("{0}.{1}: \"{2}\"",
+                //  property.Tag.GetType().Name,
+                //   property.Tag,
+                //   property.DisplayName);
+                //Console.WriteLine("{0}: {1}",
+                //    GetPropertyTypeName(property.Value),
+                //    property.Value);
+                Console.WriteLine(property.DisplayValue);
+                //Console.WriteLine();
+            }
+        }
+        
+       private void kopieren(String zieldatei)
+        {
+            System.Drawing.Image img;
+            var bmpTemp = new Bitmap("dummy.jpg");
+            img = new Bitmap(bmpTemp);            
+            File.Copy("dummy.jpg", zieldatei, true);
+        }
+
+       private static string GetPropertyTypeName(object value)
+		{
+			if (value == null)
+			{
+				return "null";
+			}
+
+			Type type = value.GetType();
+
+			return GetPropertyTypeName(type, type.IsArray ? ((Array)value).Length : 0);
+		}
+
+       private static string GetPropertyTypeName(Type type, int length)
+        {
+            if (type == null)
+            {
+                return "null";
+            }
+
+            if (type.IsArray || type.HasElementType)
+            {
+                return GetPropertyTypeName(type.GetElementType(), 0) + '[' + length + ']';
+            }
+
+            if (type.IsGenericType)
+            {
+                string name = type.Name;
+                if (name.IndexOf('`') >= 0)
+                {
+                    name = name.Substring(0, name.IndexOf('`'));
+                }
+                name += '<';
+                Type[] args = type.GetGenericArguments();
+                for (int i = 0; i < args.Length; i++)
+                {
+                    if (i > 0)
+                    {
+                        name += ',';
+                    }
+                    name += args[i].Name;
+                }
+                name += '>';
+                return name;
+            }
+
+            if (type.IsEnum)
+            {
+                return type.Name + ':' + Enum.GetUnderlyingType(type).Name;
+            }
+
+            return type.Name;
+        }
+
+       private void Button_meta_reader_Click(object sender, RoutedEventArgs e)
+        {
+           // metadata_reader(InkCanvas_Antwort.Background);
+        }
+
+        private void TextBox_Schuler_Copy1_TextChanged(object sender, TextChangedEventArgs e)
+        {
+
         }
     }
 } 

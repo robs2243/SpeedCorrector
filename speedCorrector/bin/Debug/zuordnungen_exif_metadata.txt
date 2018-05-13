@@ -1,0 +1,20 @@
+Nummer: 0 Item: HTC Typ: 2 => item.Interoperability.TagID: 271
+Nummer: 1 Item: HTC Sensation Z710e Typ: 2 => item.Interoperability.TagID: 272
+
+Nummer: 19 Item: R98 Typ: 2 => item.Interoperability.TagID: 27
+
+Nummer: 28 Item: ASCII Typ: 2 => item.Interoperability.TagID: 1
+
+item.Interoperability.TagID: 271
+item.Interoperability.TagID: 272
+item.Interoperability.TagID: 1
+item.Interoperability.TagID: 270
+item.Interoperability.TagID: 33432
+item.Interoperability.TagID: 40095
+item.Interoperability.TagID: 27
+
+nur 5stellige Zahlen:
+
+item.Interoperability.TagID: 41989
+item.Interoperability.TagID: 34855
+
