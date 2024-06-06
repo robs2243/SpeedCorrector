@@ -7,20 +7,20 @@
         mc:Ignorable="d"
         Title="SpeedCorrector" Height="795" Width="991" MinWidth="815" MinHeight="620" Loaded="Window_Loaded" ResizeMode="NoResize">
     <Grid Margin="0,0,10,4" RenderTransformOrigin="0.539,0.577">
-        <Label x:Name="Label_Lösung_Beschriftung_Aufgabenpunkte" Content="Aufgabenpunkte" HorizontalAlignment="Left" Margin="666,80,0,0" VerticalAlignment="Top"/>
-        <TextBox x:Name="TextBox_Lösung_Punke" HorizontalAlignment="Left" Height="23" Margin="689,120,0,0" TextWrapping="Wrap" Text="10" VerticalAlignment="Top" Width="52" TextAlignment="Center" VerticalContentAlignment="Center"/>
-        <Label x:Name="Label_Antwort_Beschriftung_Aufgabenpunkte" Content="erreichte Punkte" HorizontalAlignment="Left" Margin="820,323,0,0" VerticalAlignment="Top"/>
-        <Button x:Name="Button_Lösung_letztes_Bild" Content="Letztes Bild" HorizontalAlignment="Left" Margin="647,47,0,0" VerticalAlignment="Top" Width="60" ClickMode="Press" RenderTransformOrigin="0.188,0.835" FontSize="9" Click="Button_Lösung_letztes_Bild_Click"/>
+        <Label x:Name="Label_Lösung_Beschriftung_Aufgabenpunkte" Content="Aufgabenpunkte" HorizontalAlignment="Left" Margin="727,85,0,0" VerticalAlignment="Top"/>
+        <TextBox x:Name="TextBox_Lösung_Punke" HorizontalAlignment="Left" Height="23" Margin="750,125,0,0" TextWrapping="Wrap" Text="10" VerticalAlignment="Top" Width="52" TextAlignment="Center" VerticalContentAlignment="Center"/>
+        <Label x:Name="Label_Antwort_Beschriftung_Aufgabenpunkte" Content="erreichte Punkte" HorizontalAlignment="Left" Margin="731,327,0,0" VerticalAlignment="Top"/>
+        <Button x:Name="Button_Lösung_letztes_Bild" Content="Letztes Bild" HorizontalAlignment="Left" Margin="708,52,0,0" VerticalAlignment="Top" Width="60" ClickMode="Press" RenderTransformOrigin="0.188,0.835" FontSize="9" Click="Button_Lösung_letztes_Bild_Click"/>
         <TextBox x:Name="TextBox_System_Nachricht" HorizontalAlignment="Left" Height="33" Margin="140,600,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="497" ScrollViewer.VerticalScrollBarVisibility="Auto" 
                  ScrollViewer.CanContentScroll="True"/>
         <Button x:Name="Button_DB_erstellen" Content="DB erstellen" HorizontalAlignment="Left" Margin="666,523,0,0" VerticalAlignment="Top" Width="75" RenderTransformOrigin="0.568,0.131" Click="Button_DB_erstellen_Click"/>
         <Label Content="System MSG" HorizontalAlignment="Left" Margin="54,602,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.671,0.615"/>
-        <Button x:Name="Button_Lösung_naechstes_Bild" Content="Nächstes Bild" HorizontalAlignment="Left" Margin="722,47,0,0" VerticalAlignment="Top" Width="60" ClickMode="Press" RenderTransformOrigin="0.188,0.835" FontSize="9" Click="Button_Lösung_naechstes_Bild_Click"/>
-        <Button x:Name="Button_Lösung_speichern" Content="speichern" HorizontalAlignment="Left" Margin="687,170,0,0" VerticalAlignment="Top" Width="60" ClickMode="Press" RenderTransformOrigin="0.188,0.835" FontSize="9" Click="Button_Lösung_speichern_Click"/>
-        <Button x:Name="Button_Antwort_letztes_Bild" Content="Letztes Bild" HorizontalAlignment="Left" Margin="799,297,0,0" VerticalAlignment="Top" Width="60" ClickMode="Press" RenderTransformOrigin="0.188,0.835" FontSize="9" Click="Button_Antwort_letztes_Bild_Click"/>
-        <Button x:Name="Button_Antwort_naechstes_Bild" Content="Nächstes Bild" HorizontalAlignment="Left" Margin="874,297,0,0" VerticalAlignment="Top" Width="60" ClickMode="Press" RenderTransformOrigin="0.188,0.835" FontSize="9" Click="Button_Antwort_naechstes_Bild_Click"/>
-        <TextBox x:Name="TextBox_Antwort_Punke" HorizontalAlignment="Left" Height="23" Margin="839,354,0,0" TextWrapping="Wrap" Text="10" VerticalAlignment="Top" Width="52" TextAlignment="Center" VerticalContentAlignment="Center"/>
-        <Button x:Name="Button_Antwort_Punkte_speichern" Content="Punkte speichern" HorizontalAlignment="Left" Margin="826,389,0,0" VerticalAlignment="Top" Width="80" ClickMode="Press" RenderTransformOrigin="0.188,0.835" FontSize="9" Click="Button_Antwort_Punkte_speichern_Click"/>
+        <Button x:Name="Button_Lösung_naechstes_Bild" Content="Nächstes Bild" HorizontalAlignment="Left" Margin="783,52,0,0" VerticalAlignment="Top" Width="60" ClickMode="Press" RenderTransformOrigin="0.188,0.835" FontSize="9" Click="Button_Lösung_naechstes_Bild_Click"/>
+        <Button x:Name="Button_Lösung_speichern" Content="speichern" HorizontalAlignment="Left" Margin="748,175,0,0" VerticalAlignment="Top" Width="60" ClickMode="Press" RenderTransformOrigin="0.188,0.835" FontSize="9" Click="Button_Lösung_speichern_Click"/>
+        <Button x:Name="Button_Antwort_letztes_Bild" Content="Letztes Bild" HorizontalAlignment="Left" Margin="711,301,0,0" VerticalAlignment="Top" Width="60" ClickMode="Press" RenderTransformOrigin="0.188,0.835" FontSize="9" Click="Button_Antwort_letztes_Bild_Click"/>
+        <Button x:Name="Button_Antwort_naechstes_Bild" Content="Nächstes Bild" HorizontalAlignment="Left" Margin="785,301,0,0" VerticalAlignment="Top" Width="60" ClickMode="Press" RenderTransformOrigin="0.188,0.835" FontSize="9" Click="Button_Antwort_naechstes_Bild_Click"/>
+        <TextBox x:Name="TextBox_Antwort_Punke" HorizontalAlignment="Left" Height="23" Margin="751,358,0,0" TextWrapping="Wrap" Text="10" VerticalAlignment="Top" Width="52" TextAlignment="Center" VerticalContentAlignment="Center"/>
+        <Button x:Name="Button_Antwort_Punkte_speichern" Content="Punkte speichern" HorizontalAlignment="Left" Margin="737,393,0,0" VerticalAlignment="Top" Width="80" ClickMode="Press" RenderTransformOrigin="0.188,0.835" FontSize="9" Click="Button_Antwort_Punkte_speichern_Click"/>
         <InkCanvas x:Name="InkCanvas_Antwort" EditingMode="Ink" Margin="54,297,338,283" Cursor="Pen" MinHeight="0" RenderTransformOrigin="0.492,0.5" Height="182" Width="583">
             <InkCanvas.Background>
                 <ImageBrush/>
@@ -29,8 +29,8 @@
                 <DrawingAttributes Color="#FFFD1A1A" FitToCurve="False" Height="2.0031496062992127" IgnorePressure="False" IsHighlighter="False" StylusTip="Ellipse" StylusTipTransform="Identity" Width="2.0031496062992127"/>
             </InkCanvas.DefaultDrawingAttributes>
         </InkCanvas>
-        <Button x:Name="Button_Antwort_Korrektur_speichern" Content="Korrektur speichern" HorizontalAlignment="Left" Margin="821,418,0,0" VerticalAlignment="Top" Width="90" ClickMode="Press" RenderTransformOrigin="0.188,0.835" FontSize="9"/>
-        <Button x:Name="Button_Antwort_Punte_Korrektur_speichern" Content="Pkt und Korrektur speichern" HorizontalAlignment="Left" Margin="804,447,0,0" VerticalAlignment="Top" Width="129" ClickMode="Press" RenderTransformOrigin="0.188,0.835" FontSize="9"/>
+        <Button x:Name="Button_Antwort_Korrektur_speichern" Content="Korrektur speichern" HorizontalAlignment="Left" Margin="733,422,0,0" VerticalAlignment="Top" Width="90" ClickMode="Press" RenderTransformOrigin="0.188,0.835" FontSize="9"/>
+        <Button x:Name="Button_Antwort_Punte_Korrektur_speichern" Content="Pkt und Korrektur speichern" HorizontalAlignment="Left" Margin="715,451,0,0" VerticalAlignment="Top" Width="130" ClickMode="Press" RenderTransformOrigin="0.188,0.835" FontSize="9"/>
         <TextBox x:Name="TextBox_pfad_fragen" HorizontalAlignment="Left" Height="23" Margin="58,524,0,0" TextWrapping="Wrap" Text="Ordner für Schülerlösungen wählen..." VerticalAlignment="Top" Width="481" PreviewMouseDown="TextBox_pfad_fragen_PreviewMouseDown"/>
         <TextBox x:Name="TextBox_pfad_antworten" HorizontalAlignment="Left" Height="23" Margin="58,558,0,0" TextWrapping="Wrap" Text="Ordner für Musterlösungen wählen..." VerticalAlignment="Top" Width="481" PreviewMouseDown="TextBox_pfad_antworten_PreviewMouseDown"/>
         <Button x:Name="Button_fragen_wählen" Content="Auswählen" HorizontalAlignment="Left" Margin="562,523,0,0" VerticalAlignment="Top" Width="75" RenderTransformOrigin="0.568,0.131" Click="Button_fragen_wählen_Click"/>

@@ -307,6 +307,9 @@ namespace speedCorrector
 
                 }
 
+                Console.WriteLine(counter);
+                Console.WriteLine(counter2);
+
                 if (counter2 > 0 && counter2 < pfade_antworten.Count<String>())
                 {
 
